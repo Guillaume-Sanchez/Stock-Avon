@@ -4,7 +4,25 @@ import datas from '../../assets/data/data.json'
 
 const Home = () => {
 
-  console.log(datas.stock)
+  const addObject = (data, amount, name) => {
+
+    let dataTarget = data.stock
+
+    console.log(dataTarget)
+    
+    // let newAmount = amount + 1;
+    // console.log(newAmount);
+
+    // let dataJson = JSON.parse(data);
+
+    // console.log(dataJson)
+
+
+  }
+
+  const lostObject = (amount) =>{
+    alert(amount)
+  }
 
     return (
 
@@ -17,6 +35,8 @@ const Home = () => {
                   <tr>
                       <th scope="col">Produit</th>
                       <th scope="col">Quantité</th>
+                      <th scope="col">Ajout</th>
+                      <th scope="col">Retrait</th>
                   </tr>
               </thead>
               <tbody>
@@ -26,6 +46,8 @@ const Home = () => {
                 <tr key={data.name}>
                     <td>{data.name}</td>
                     <td>{data.amount}</td>
+                    <td><button onClick={() => addObject(datas, data.amount, data.name)} type="button" className="btn btn-outline-secondary">+</button></td>
+                    <td><button onClick={() => lostObject(data)} type="button" className="btn btn-outline-secondary">-</button></td>
                 </tr>
 
               ))}
