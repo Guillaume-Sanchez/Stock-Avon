@@ -1,6 +1,8 @@
 import React from 'react';
 
+import Line from './line'
 import datas from '../../assets/data/data.json'
+
 
 const Home = () => {
 
@@ -43,12 +45,7 @@ const Home = () => {
 
               {datas.stock.map((data) => (
 
-                <tr key={data.name}>
-                    <td>{data.name}</td>
-                    <td>{data.amount}</td>
-                    <td><button onClick={() => addObject(datas, data.amount, data.name)} type="button" className="btn btn-outline-secondary">+</button></td>
-                    <td><button onClick={() => lostObject(data)} type="button" className="btn btn-outline-secondary">-</button></td>
-                </tr>
+                <Line data={data} />
 
               ))}
 
