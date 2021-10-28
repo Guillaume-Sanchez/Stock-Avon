@@ -1,0 +1,17 @@
+{
+  "stock": [
+    {
+      "name": "Souris",
+      "amount": 7
+    },
+    {
+      "name": "Clavier",
+      "amount": 13
+    },
+    {
+      "name": "Ecran",
+      "amount": 17
+    }
+  ]
+}
+  

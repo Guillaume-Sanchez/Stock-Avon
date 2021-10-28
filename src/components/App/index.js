@@ -9,7 +9,6 @@ import './app.scss';
 import Header from '../Layout/Header';
 import Footer from '../Layout/Footer';
 import Home from '../Home';
-import Exemple from '../Exemple';
 import Error404 from '../Error404';
 
 
@@ -21,9 +20,6 @@ const App = () => {
         <Switch>
           <Route path="/" exact>
             <Home />
-          </Route>
-          <Route path="/exemple">
-            <Exemple />
           </Route>
           <Route path="*">
             <Error404 />
