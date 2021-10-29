@@ -1,30 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Line from './line'
-import datas from '../../assets/data/data.json'
+import AddOBject from './addObjet'
+
+import {fetchStockList} from './ApiStock';
 
 
 const Home = () => {
 
-  const addObject = (data, amount, name) => {
+  const [Stock, setStock] = useState([]);
 
-    let dataTarget = data.stock
-
-    console.log(dataTarget)
-    
-    // let newAmount = amount + 1;
-    // console.log(newAmount);
-
-    // let dataJson = JSON.parse(data);
-
-    // console.log(dataJson)
-
-
-  }
-
-  const lostObject = (amount) =>{
-    alert(amount)
-  }
+  useEffect(() => {
+    fetchStockList(setStock);
+  }, []);
 
     return (
 
@@ -43,15 +31,18 @@ const Home = () => {
               </thead>
               <tbody>
 
-              {datas.stock.map((data) => (
+              {Stock.map((data) => (
 
-                <Line data={data} />
+                <Line key={data.name} data={data} />
 
               ))}
 
               </tbody>
           </table>
         </div>
+
+        <AddOBject />
+        
       </main>
     )
 }
