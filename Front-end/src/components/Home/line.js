@@ -1,9 +1,9 @@
 import  React, { useState } from "react";
 
-import {fetchStockList, updateObjet} from './ApiStock';
+import {updateObjet, deleteObjet} from './ApiStock';
 
 
-const Line = ({data}) => {
+const Line = ({data, setStock}) => {
 
     const [amount, setAmount] = useState(data.amount);
 
@@ -11,12 +11,12 @@ const Line = ({data}) => {
 
     let newAmount = amount + 1;
 
-    updateObjet(data.id, newAmount)
+    updateObjet(data.id, newAmount, setStock)
     setAmount(newAmount);
 
   }
 
-  const lostObject = (data, amount) =>{
+  const lostObject = (data, amount) => {
 
     let newAmount = amount - 1;
 
@@ -26,9 +26,13 @@ const Line = ({data}) => {
       setAmount(0);
     } 
     else{
-      updateObjet(data.id, newAmount)
+      updateObjet(data.id, newAmount, setStock)
       setAmount(newAmount);
     };
+  }
+
+  const hundleDelete = (id) => {
+    deleteObjet(id, setStock);
   }
 
     return (
@@ -38,6 +42,18 @@ const Line = ({data}) => {
                     <td>{amount}</td>
                     <td><button onClick={() => addObject(data, amount)} type="button" className="btn btn-outline-secondary">+</button></td>
                     <td><button onClick={() => lostObject(data, amount)} type="button" className="btn btn-outline-secondary">-</button></td>
+                    <td className="text-right">
+                        <div className="btn-group">
+                            <button type="button" className="btn btn-sm btn-danger dropdown-toggle"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i className="fa fa-trash-o" aria-hidden="true"></i>
+                            </button>
+                            <div className="dropdown-menu">
+                                <button onClick={(evt) => hundleDelete(data.id)} className="dropdown-item">Oui, je veux supprimer</button>
+                                <a className="dropdown-item" href="#" data-toggle="dropdown">Annuler</a>
+                            </div>
+                        </div>
+                    </td>
                 </tr>
     )
 }

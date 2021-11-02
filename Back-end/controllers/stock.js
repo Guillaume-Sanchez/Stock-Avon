@@ -77,17 +77,17 @@ exports.deleteStock = (req, res, next) => {
 
   const id = req.params.id
 
-  models.Stock.findByPk(req.params.id).then(membre => {
-    const membreDeleted = membre;
-    models.Membre.destroy({
-      where: { id: membre.id }
+  models.Stock.findByPk(req.params.id).then(stock => {
+    const stockDeleted = stock;
+    models.Stock.destroy({
+      where: { id: stock.id }
     })
     .then(_ => {
-      const message = `Le membre ${membreDeleted.name} avec l'identifiant n°${membreDeleted.id} a bien été supprimé.`
-      res.json({message, data: membreDeleted })
+      const message = `L\'objet ${stockDeleted.name} avec l'identifiant n°${stockDeleted.id} a bien été supprimé.`
+      res.json({message, data: stockDeleted })
     })
     .catch(error => {
-      const message = 'Le membre n\'as pas pu être supprimé'
+      const message = 'L\'objet n\'as pas pu être supprimé'
       res.status(500).json({ message, data: error})
     })
   })
