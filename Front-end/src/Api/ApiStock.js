@@ -27,7 +27,6 @@ export const updateObjet = (id, amount, setStock) => {
     fetchStockList(setStock);
   })
   .catch((error) => {
-    console.log(error);
   })
   .finally(() => {
     // console.log("tout c'est bien passé !");
@@ -44,11 +43,11 @@ export const addObjet = (name, amount, setStock) => {
     }
   })
   .then((response) => {
-    //alert('modifié')
+    alert(`L'objet "${name}" a été ajouté`)
     fetchStockList(setStock);
   })
   .catch((error) => {
-    console.log(error);
+    alert(`L'objet "${name}" n'a pas pu être ajouté`)
   })
   .finally(() => {
     // console.log("tout c'est bien passé !");
@@ -62,11 +61,11 @@ export const deleteObjet = (id, setStock) => {
     }
   })
     .then((response) => {
-      console.log(response.data.data)
+      alert(`L'objet "${response.data.data.name}" a été supprimé`)
       fetchStockList(setStock);
     })
     .catch((error) => {
-      console.log(error);
+      alert(`L'objet n'a pas pu être supprimé`)
     })
     .finally(() => {
       // console.log("tout c'est bien passé !");

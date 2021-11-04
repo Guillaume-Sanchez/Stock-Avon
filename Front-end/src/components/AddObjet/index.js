@@ -1,6 +1,6 @@
 import  React, { useState } from "react";
 
-import {addObjet} from '../Home/ApiStock';
+import {addObjet} from '../../Api/ApiStock';
 import "./addObjet.scss"
 
 
@@ -33,7 +33,7 @@ const AddObjet = ({setAddObjectScreen, setStock}) => {
 
             <form onSubmit={hundlesubmit} className="modal-wrapper">
                 <div className="mb-3 d-flex justify-content-end">
-                    <button to="" onClick={hundleCancel} className="btn btn-danger">X</button>
+                    <a to="" onClick={hundleCancel} className="btn btn-danger">X</a>
                 </div>
 
                 <div className="mb-3">
@@ -47,8 +47,8 @@ const AddObjet = ({setAddObjectScreen, setStock}) => {
                 </div>
 
                 <div className="mb-3 d-flex justify-content-around">
-                    <button type="submit" className="btn btn-success m-1">Ajouter</button>
-                    <button onClick={hundleCancel} className="btn btn-danger m-1">Annuler</button>
+                    <button type="submit" className="btn btn-success m-1">Ajouter <i class="fas fa-plus"></i></button>
+                    <a onClick={hundleCancel} className="btn btn-danger m-1">Annuler</a>
                 </div>
             </form>
 
