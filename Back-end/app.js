@@ -9,6 +9,7 @@ const models = require('./models');
 // Routes
 
 const stockRoutes = require('./routes/stock');
+const userRoutes = require('./routes/users');
 
 const app = express();
 
@@ -22,9 +23,10 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 
 app.get('/', function(req, res){
-    res.redirect('https://www.guillaume-sanchez.fr/');
+    res.redirect('http://10.20.8.233/');
   });
 
+app.use('/api/auth', userRoutes);
 app.use('/api', stockRoutes);
 
 module.exports = app;
